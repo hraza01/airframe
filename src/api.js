@@ -1,6 +1,6 @@
 export async function fetchTemplates() {
     const MANIFEST_URL =
-        "https://raw.githubusercontent.com/hraza01/airframe-templates/main/templates.json"
+        "https://raw.githubusercontent.com/hraza01/airframe-templates/manifest/templates.json"
 
     try {
         const response = await fetch(MANIFEST_URL)
