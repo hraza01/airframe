@@ -31,6 +31,11 @@
         "terminal-link": "^5.0.0",
         "tiged": "^2.12.7"
     },
+    "overrides": {
+        "tiged": {
+            "tar": "^7.5.7"
+        }
+    },
     "engines": {
         "node": ">=20.5.0"
     },
