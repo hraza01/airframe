@@ -1,6 +1,6 @@
 {
     "name": "create-airframe-dag",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "CLI tool to scaffold Airflow DAG projects",
     "main": "bin/cli.js",
     "type": "module",
