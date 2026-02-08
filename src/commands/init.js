@@ -6,7 +6,13 @@ import {
     getExistingProjects,
 } from "../lib/env.js"
 import { initGitRepo } from "../lib/git.js"
-import { showWelcome, displayTemplates, showCompletion } from "../ui/display.js"
+import {
+    showWelcome,
+    printBanner,
+    logWorkingDir,
+    displayTemplates,
+    showCompletion,
+} from "../ui/display.js"
 import {
     createSpinner,
     askForProjectDetails,
@@ -15,20 +21,24 @@ import {
 import { log } from "@clack/prompts"
 import chalk from "chalk"
 import readline from "node:readline"
+import path from "node:path"
 
 export async function initCommand({ airflowPath } = {}) {
     const baseDir = airflowPath ? String(airflowPath) : process.cwd()
 
-    await showWelcome(baseDir)
+    await printBanner()
+    await showWelcome()
 
     // Step 0: Check for dags directory
     if (!checkDagsDirectory(baseDir)) {
         log.error(`No "dags" directory found in path: ${baseDir}`)
         log.warn(
-            "Please run `airframe init` from your airflow environment directory.",
+            "Please run `npx create-airframe-dag@latest` from your airflow environment directory.",
         )
         process.exit(1)
     }
+
+    logWorkingDir(path.join(baseDir, "dags"))
 
     const s = createSpinner()
 

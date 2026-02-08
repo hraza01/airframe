@@ -16,18 +16,16 @@ export function printBanner() {
     )
 }
 
-export function showWelcome(workingDir) {
-    printBanner()
+export function showWelcome() {
     intro(chalk.bold.cyanBright("The blueprint for scalable Airflow DAGs"))
 
     // Explicit note about Airflow support
     log.info(chalk.dim("Supports Apache Airflow 2.0 (2.8 or higher)"))
-    logWorkingDir(workingDir)
     log.warn(chalk.dim("Press CTRL+C to exit the Airframe CLI.\n"))
 }
 
 export function logWorkingDir(dir = process.cwd()) {
-    log.warn(
+    log.info(
         `You are about to initialize an Airframe project in this directory:\n${chalk.dim(dir)}`,
     )
 }
@@ -36,12 +34,12 @@ export function showCompletion({ targetDir }) {
     outro(chalk.green.bold(`Airframe project initialized.`))
 
     console.log(
-        chalk.bold.magenta(
+        chalk.bold.blueBright(
             `Project directory: ${chalk.underline(targetDir)}\n`,
         ),
     )
 
-    console.log(chalk.bold.blueBright("Happy Orchestrating!"))
+    console.log(chalk.bold.cyanBright("Happy Orchestrating!"))
 }
 
 export function printHelp() {
