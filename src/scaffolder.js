@@ -31,8 +31,8 @@ export async function customizeProject({
             __DAG_AUTHOR__: dagAuthor,
         })
 
-        // Cleanup for Advanced template
-        if (template && template.label === "Advanced") {
+        // Cleanup formatting directives for all templates
+        if (template) {
             await replaceInFiles(targetDir, {
                 "# fmt: off\\n": "",
                 "# isort: off\\n": "",
